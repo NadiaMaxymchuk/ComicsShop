@@ -62,5 +62,10 @@ namespace BLL.Repositories.Classes
         {
             return FakeDBContext.Tags;
         }
+
+        public void Remove(Tag tag)
+        {
+            FakeDBContext.Tags.Remove(tag);
+        }
     }
 }

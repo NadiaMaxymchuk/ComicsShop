@@ -13,5 +13,7 @@ namespace BLL.Services.Interfaces
         public Author GetByName(string name);
         public List<Author> GetAll();
         public void DeleteAuthor(Author author);
+        public void AddAuthor(Author autor);
+        public void UpdateAuthor(Author author);
     }
 }

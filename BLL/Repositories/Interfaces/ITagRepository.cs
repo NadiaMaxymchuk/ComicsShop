@@ -2,7 +2,8 @@
 
 namespace BLL.Repositories.Interfaces
 {
-    interface ITagRepository: IRepository<Tag>
+    interface ITagRepository : IRepository<Tag>
     {
+        void Remove(Tag tag);
     }
 }

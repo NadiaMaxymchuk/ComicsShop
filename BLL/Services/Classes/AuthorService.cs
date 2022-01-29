@@ -22,7 +22,7 @@ namespace BLL.Services.Classes
             comicsRepository = new ComicsRepository();
         }
 
-        void AddAuthor(Author author)
+        public void AddAuthor(Author author)
         {
             if(author == null && authorRepository.FindOne(x=>x.Id!=author.Id)==null)
             authorRepository.Add(author);
@@ -45,7 +45,12 @@ namespace BLL.Services.Classes
 
         public void DeleteAuthor(Author author)
         {
-            FakeDBContext.Authors.Remove(author);
+            authorRepository.Remove(author);
+        }
+
+        public void UpdateAuthor(Author author)
+        {
+            authorRepository.Edit(author);
         }
 
     }

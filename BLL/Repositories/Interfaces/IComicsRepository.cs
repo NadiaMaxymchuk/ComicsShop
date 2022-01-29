@@ -9,6 +9,7 @@ namespace BLL.Repositories.Interfaces
 {
      interface IComicsRepository : IRepository<Comics>
     {
-
+        public void EditComics(Comics comics);
+        public void DeleteComics(Comics comics);
     }
 }
