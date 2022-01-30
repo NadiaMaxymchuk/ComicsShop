@@ -13,41 +13,39 @@ namespace ComicsShop
         static public void TagsMenu()
         {
             short curItem = 0;
-            string[] menuSelect = { "Add new tag ", "Show Tags ","Find Tag ", "Return to main menu ", };
+            string[] menuSelect = { "Add new tag", "Show Tags", "Return to main menu", };
 
             switch (Menu(curItem, menuSelect))
             {
                 case 0: TagHelper.AddTag(); break;
                 case 1: TagHelper.ShowAll(); break;
-                case 2: TagHelper.FindTagMenu(); break;
-                case 3: FirstMenu(); break;
+                case 2: FirstMenu(); break;
 
             }
         }
         static public void AuthorMenu()
         {
             short curItem = 0;
-            string[] menuSelect = { "Add new author ", "Show all autors ", "Find author ", "Return to main menu ", };
+            string[] menuSelect = { "Add new author", "Show all autors", "", "Return to main menu", };
 
             switch (Menu(curItem, menuSelect))
             {
                 case 0: AuthorHelper.AddAuthor(); break;
                 case 1: AuthorHelper.ShowAll(); break;
-                case 2: AuthorHelper.FindAuthorMenu(); break;
-                case 3: FirstMenu(); break;
+                case 2: FirstMenu(); break;
 
             }
         }
         static public void ComicsMenu()
         {
             short curItem = 0;
-            string[] menuSelect = { "Add new comics ", "Show all comics ", "Find comics ", "Return to main menu ", };
+            string[] menuSelect = { "Add new comics", "Show all comics", "", "Return to main menu", };
 
             switch (Menu(curItem, menuSelect))
             {
                 case 0: ComicsHelper.AddComics(); break;
                 case 1: ComicsHelper.ShowAll(); break;
-                case 2: ComicsHelper.FindComicsMenu(); break;
+                case 2:; break;
                 case 3: FirstMenu(); break;
 
             }
