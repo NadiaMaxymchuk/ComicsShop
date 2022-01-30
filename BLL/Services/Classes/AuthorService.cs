@@ -24,8 +24,10 @@ namespace BLL.Services.Classes
 
         public void AddAuthor(Author author)
         {
-            if(author == null && authorRepository.FindOne(x=>x.Id!=author.Id)==null)
-            authorRepository.Add(author);
+            if (author != null && authorRepository.FindOne(x => x.Id == author.Id) == null)
+            {
+                authorRepository.Add(author);
+            }
         }
 
         public Author GetById(Guid id)
@@ -53,9 +55,9 @@ namespace BLL.Services.Classes
             authorRepository.Edit(author);
         }
 
-        public Author FindPartName(string name)
+        public List<Author> FindPartName(string name)
         {
-            return authorRepository.FindOne(x => x.LastName.Contains(name)||x.FirstName.Contains(name));
+            return authorRepository.FindMany(x => x.LastName.Contains(name)||x.FirstName.Contains(name));
         }
 
     }

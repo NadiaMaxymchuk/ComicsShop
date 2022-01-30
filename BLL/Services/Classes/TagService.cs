@@ -24,7 +24,7 @@ namespace BLL.Services.Classes
 
         public void AddTag(Tag tag)
         {
-            if(tag == null && tagRepository.FindOne(x=>x.Id!=tag.Id)==null)
+            if(tag != null && tagRepository.FindOne(x=>x.Id==tag.Id)==null)
             {
                 tagRepository.Add(tag);
             }
@@ -38,7 +38,7 @@ namespace BLL.Services.Classes
         
         public Tag GetByName(string name)
         {
-            return tagRepository.FindByName(name) as Tag;
+            return tagRepository.FindByName(name);
 
         }
 
@@ -57,9 +57,9 @@ namespace BLL.Services.Classes
             tagRepository.Edit(tag);
         }
 
-        public Tag FindPartName(string name)
+        public List<Tag> FindPartName(string name)
         {
-           return tagRepository.FindOne(x=>x.Name.Contains(name));
+           return tagRepository.FindMany(x=>x.Name.Contains(name));
         }
     }
 }

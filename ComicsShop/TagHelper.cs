@@ -46,7 +46,7 @@ namespace ComicsShop
 
         static public void EditTag(Tag tag)
         {
-            Console.WriteLine("Enter new tag");
+            Console.WriteLine($"Enter new tag for {tag.Name} : ");
             tag.Name = Console.ReadLine();
 
             Program.tagService.UpdateTag(tag);
@@ -58,7 +58,7 @@ namespace ComicsShop
             short curItem = 0;
             string[] menuSelect = { "Find part of name", "Find by name", "Find by Id ","Return to tags menu", "Return to main menu", };
 
-            switch (MethodController.Menu(curItem, menuSelect, $"Menu"))
+            switch (MethodController.Menu(curItem, menuSelect, "Menu"))
             {
                 case 0: FindPartName(); break;
                 case 1: FindOfName(); break;
@@ -73,9 +73,15 @@ namespace ComicsShop
             Console.WriteLine("Enter the name you want to find");
             var findName = Console.ReadLine();
 
-            var t = Program.tagService.FindPartName(findName);
-            Console.WriteLine(t.Name);
-            FindTagMenu();
+            var tags = Program.tagService.FindPartName(findName);
+          
+             short curentItem = 0;
+
+            curentItem = MethodController.Menu(curentItem, tags.Select(t => t.Name).ToArray(),$"Result search for '{findName}'");
+
+            var tag = tags[curentItem];
+            Console.ReadKey();
+            TagMenu(tag);
         }
 
         static public void FindOfName()
@@ -84,18 +90,19 @@ namespace ComicsShop
             var findName = Console.ReadLine();
 
             var t = Program.tagService.GetByName(findName);
-            Console.WriteLine(t.Name);
-
-            FindTagMenu();
+            Console.WriteLine($" Name: {t.Name }");
+            Console.ReadKey();
+            TagMenu(t);
         }
         static public void FindById()
         {
-            Console.WriteLine("Enter the name you want to find");
+            Console.WriteLine("Enter the id you want to find");
             Guid findId = Guid.Parse(Console.ReadLine());
 
            var t = Program.tagService.GetById(findId);
             Console.WriteLine(t.Name);
-            FindTagMenu();
+            Console.ReadKey();
+            TagMenu(t);
         }
         #endregion
     }

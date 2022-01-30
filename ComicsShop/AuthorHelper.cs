@@ -84,7 +84,7 @@ namespace ComicsShop
         static public void FindAuthorMenu()
         {
             short curItem = 0;
-            string[] menuSelect = { "Find by name", "Find by name", "Find by Id ", "Return to author's menu", "Return to main menu", };
+            string[] menuSelect = { "Find by name", "Find part by name", "Find by Id ", "Return to author's menu", "Return to main menu", };
 
             switch (MethodController.Menu(curItem, menuSelect, $"Menu"))
             {
@@ -107,6 +107,7 @@ namespace ComicsShop
                 $"\nBirthDate: {author.BirthDate}" +
                 $"\nCreation Date: {author.CreationDate}");
             Console.WriteLine("Comics", author.Comicses.Select(e => e.Name).ToArray());
+            Console.ReadKey();
             FindAuthorMenu();
         }
 
@@ -115,13 +116,21 @@ namespace ComicsShop
             Console.WriteLine("Enter part of name you want to find");
             var findName = Console.ReadLine();
             var author = Program.authorService.FindPartName(findName);
+            short curentItem = 0;
 
-            Console.WriteLine($"First Name: { author.FirstName }" +
+            curentItem = MethodController.Menu(curentItem, author.Select(t => t.FirstName+" "+t.LastName).ToArray(), $"Result search for '{findName}'");
+
+            var autors = author[curentItem];
+            Console.ReadKey();
+            AuthorMenu(autors);
+
+            /*Console.WriteLine($"First Name: { author.FirstName }" +
                  $"\nLast Name:  { author.LastName}" +
                  $"\nBirthDate: {author.BirthDate}" +
                  $"\nCreation Date: {author.CreationDate}");
-            Console.WriteLine("Comics", author.Comicses.Select(e => e.Name).ToArray());
-            FindAuthorMenu();
+            Console.WriteLine("Comics", author.Comicses.Select(e => e.Name).ToArray());*/
+            Console.ReadKey();
+            
         }
         static public void FindById()
         {
@@ -134,6 +143,7 @@ namespace ComicsShop
                  $"\nBirthDate: {author.BirthDate}" +
                  $"\nCreation Date: {author.CreationDate}");
             Console.WriteLine("Comics", author.Comicses.Select(e => e.Name).ToArray());
+            Console.ReadKey();
             FindAuthorMenu();
         }
         #endregion

@@ -32,7 +32,7 @@ namespace BLL.Repositories.Classes
         // ToDo
         public Tag FindByName(string name)
         {
-            return FakeDBContext.Tags.FirstOrDefault(x=>x.Name == name);
+            return FakeDBContext.Tags.FirstOrDefault(x=>x.Name.ToLower() == name.ToLower());
         }
 
         // ToDo

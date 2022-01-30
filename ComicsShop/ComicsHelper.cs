@@ -112,15 +112,22 @@ namespace ComicsShop
             var findName = Console.ReadLine();
             var comics = Program.comicsService.FindPartName(findName);
 
-            Console.WriteLine($"Name: { comics.Name }" +
+            short curentItem = 0;
+
+            curentItem = MethodController.Menu(curentItem, comics.Select(t => t.Name).ToArray(), $"Result search for '{findName}'");
+
+            var comics1 = comics[curentItem];
+
+            /*Console.WriteLine($"Name: { comics.Name }" +
                 $"\nCreation Date:  { comics.CreationDate}" +
                 $"\nOrder: {comics.Order}" +
                 $"\nSpecial: {comics.IsSpecial}" +
                 $"\nPages: {comics.Pages}" +
                 $"\nPubliseHouse: {comics.PublishingHouse}" +
                 $"\nAuthor: {comics.Author}");   
-            Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
-            FindComicsMenu();
+            Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());*/
+            Console.ReadKey();
+            ComicsMenu(comics1);
         }
 
         static public void FindByName()
@@ -137,6 +144,7 @@ namespace ComicsShop
                 $"\nPubliseHouse: {comics.PublishingHouse}" +
                 $"\nAuthor: {comics.Author}");
             Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
+            Console.ReadKey();
             FindComicsMenu();
         }
         static public void FindById()
@@ -153,6 +161,7 @@ namespace ComicsShop
                 $"\nPubliseHouse: {comics.PublishingHouse}" +
                 $"\nAuthor: {comics.Author}");
             Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
+            Console.ReadKey();
             FindComicsMenu(); 
         }
         #endregion
