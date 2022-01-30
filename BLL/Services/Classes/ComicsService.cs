@@ -72,5 +72,10 @@ namespace BLL.Services.Classes
         {
             comicsRepository.EditComics(comics);
         }
+
+        public Comics FindPartName(string name)
+        {
+            return comicsRepository.FindOne(x=>x.Name.Contains(name));
+        }
     }
 }

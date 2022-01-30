@@ -10,5 +10,6 @@ namespace BLL.Repositories.Interfaces
      interface IAuthorRepository: IRepository<Author>
     {
         void Remove(Author author);
+        public Author FindByName(string name);
     }
 }

@@ -53,5 +53,10 @@ namespace BLL.Services.Classes
             authorRepository.Edit(author);
         }
 
+        public Author FindPartName(string name)
+        {
+            return authorRepository.FindOne(x => x.LastName.Contains(name)||x.FirstName.Contains(name));
+        }
+
     }
 }

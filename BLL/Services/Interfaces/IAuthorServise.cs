@@ -15,5 +15,6 @@ namespace BLL.Services.Interfaces
         public void DeleteAuthor(Author author);
         public void AddAuthor(Author autor);
         public void UpdateAuthor(Author author);
+        public Author FindPartName(string name);
     }
 }

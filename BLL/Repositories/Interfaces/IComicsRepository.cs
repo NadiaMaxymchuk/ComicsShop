@@ -11,5 +11,6 @@ namespace BLL.Repositories.Interfaces
     {
         public void EditComics(Comics comics);
         public void DeleteComics(Comics comics);
+        public Comics FindByName(string name);
     }
 }

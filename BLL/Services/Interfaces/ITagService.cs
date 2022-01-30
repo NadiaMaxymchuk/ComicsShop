@@ -13,6 +13,7 @@ namespace BLL.Managers.Interfaces
         public void DeleteTag(Tag tag);
         void AddTag(Tag tag); 
         void UpdateTag(Tag tag);
+        public Tag FindPartName(string name);
 
         //todo: Create Another Methods
     }

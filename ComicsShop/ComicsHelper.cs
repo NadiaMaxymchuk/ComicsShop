@@ -10,6 +10,7 @@ namespace ComicsShop
 {
     public class ComicsHelper
     {
+        #region Add
         public static void AddComics()
         {
             Comics comics = new Comics();
@@ -32,6 +33,7 @@ namespace ComicsShop
 
             Program.comicsService.AddComics(comics);
         }
+        #endregion
 
         public static void ShowAll()
         {
@@ -60,6 +62,7 @@ namespace ComicsShop
             }
         }
 
+        #region Edit
         static public void EditName(Comics comics)
         {
             Console.WriteLine("Enter new name comics");
@@ -86,5 +89,72 @@ namespace ComicsShop
             Program.comicsService.DeleteComics(comics);
             ComicsMenu(comics);
         }
+        #endregion
+        #region Find
+        static public void FindComicsMenu()
+        {
+            short curItem = 0;
+            string[] menuSelect = { "Find part of name", "Find by name", "Find by Id ", "Return to comics menu", "Return to main menu", };
+
+            switch (MethodController.Menu(curItem, menuSelect, $"Menu"))
+            {
+                case 0: FindPartName(); break;
+                case 1: FindByName(); break;
+                case 2: FindById(); break;
+                case 3: MethodController.ComicsMenu(); break;
+                case 4: MethodController.FirstMenu(); break;
+            }
+        }
+
+        static public void FindPartName()
+        {
+            Console.WriteLine("Enter the name you want to find");
+            var findName = Console.ReadLine();
+            var comics = Program.comicsService.FindPartName(findName);
+
+            Console.WriteLine($"Name: { comics.Name }" +
+                $"\nCreation Date:  { comics.CreationDate}" +
+                $"\nOrder: {comics.Order}" +
+                $"\nSpecial: {comics.IsSpecial}" +
+                $"\nPages: {comics.Pages}" +
+                $"\nPubliseHouse: {comics.PublishingHouse}" +
+                $"\nAuthor: {comics.Author}");   
+            Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
+            FindComicsMenu();
+        }
+
+        static public void FindByName()
+        {
+            Console.WriteLine("Enter the name you want to find");
+            var findName = Console.ReadLine();
+            var comics = Program.comicsService.GetByName(findName);
+
+            Console.WriteLine($"Name: { comics.Name }" +
+                $"\nCreation Date:  { comics.CreationDate}" +
+                $"\nOrder: {comics.Order}" +
+                $"\nSpecial: {comics.IsSpecial}" +
+                $"\nPages: {comics.Pages}" +
+                $"\nPubliseHouse: {comics.PublishingHouse}" +
+                $"\nAuthor: {comics.Author}");
+            Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
+            FindComicsMenu();
+        }
+        static public void FindById()
+        {
+            Console.WriteLine("Enter the Id you want to find");
+            Guid findId = Guid.Parse(Console.ReadLine());
+
+            var comics = Program.comicsService.GetById(findId);
+            Console.WriteLine($"Name: { comics.Name }" +
+                $"\nCreation Date:  { comics.CreationDate}" +
+                $"\nOrder: {comics.Order}" +
+                $"\nSpecial: {comics.IsSpecial}" +
+                $"\nPages: {comics.Pages}" +
+                $"\nPubliseHouse: {comics.PublishingHouse}" +
+                $"\nAuthor: {comics.Author}");
+            Console.WriteLine("Tags", comics.Tags.Select(e => e.Name).ToArray());
+            FindComicsMenu(); 
+        }
+        #endregion
     }
 }

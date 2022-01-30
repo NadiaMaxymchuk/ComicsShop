@@ -56,5 +56,10 @@ namespace BLL.Services.Classes
         {
             tagRepository.Edit(tag);
         }
+
+        public Tag FindPartName(string name)
+        {
+           return tagRepository.FindOne(x=>x.Name.Contains(name));
+        }
     }
 }

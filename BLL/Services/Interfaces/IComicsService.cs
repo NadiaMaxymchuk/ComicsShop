@@ -15,5 +15,6 @@ namespace BLL.Services.Interfaces
         List<Comics> GetAllComics();
         void DeleteComics(Comics comics);
         public void UpdateComics(Comics comics);
+        public Comics FindPartName(string name);
     }
 }

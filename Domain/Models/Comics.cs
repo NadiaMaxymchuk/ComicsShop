@@ -12,7 +12,7 @@ namespace Domain.Models
         public Author Author { get; set; }
 
         public int Order { get; set; }
-
+         
         public bool IsSpecial { get; set; } = false;
 
         public PublishingHouse PublishingHouse { get; set; }
