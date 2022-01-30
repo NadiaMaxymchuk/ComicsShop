@@ -66,26 +66,5 @@ namespace BLL.Repositories.Classes
         {
             return FakeDBContext.Comicses;
         }
-
-        public void EditComics(Comics comics)
-        {
-            var oldEntity = FakeDBContext.Comicses.FirstOrDefault(x => x.Id == comics.Id);
-
-            if (oldEntity == null)
-            {
-                throw new NullReferenceException();
-            }
-
-            oldEntity.Name = comics.Name;
-            oldEntity.CreationDate = comics.CreationDate;
-            oldEntity.Pages = comics.Pages;
-            oldEntity.Order=comics.Order;   
-            oldEntity.PublishingHouse = comics.PublishingHouse;
-        }
-
-        public void DeleteComics(Comics comics)
-        {
-            FakeDBContext.Comicses.Remove(comics);
-        }
     }
 }

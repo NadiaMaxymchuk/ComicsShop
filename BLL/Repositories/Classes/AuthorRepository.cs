@@ -62,11 +62,6 @@ namespace BLL.Repositories.Classes
         {
             return FakeDBContext.Authors;
         }
-
-        public void Remove(Author author)
-        {
-            FakeDBContext.Authors.Remove(author);
-        }
     }
 
 

@@ -14,6 +14,5 @@ namespace BLL.Services.Interfaces
         Comics GetByName(string name);
         List<Comics> GetAllComics();
         void DeleteComics(Comics comics);
-        public void UpdateComics(Comics comics);
     }
 }

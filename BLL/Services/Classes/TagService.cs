@@ -22,7 +22,7 @@ namespace BLL.Services.Classes
             return tagRepository.FindByName(name);
         }
 
-        public void AddTag(Tag tag)
+        void AddTag(Tag tag)
         {
             if(tag == null && tagRepository.FindOne(x=>x.Id!=tag.Id)==null)
             {
@@ -49,12 +49,7 @@ namespace BLL.Services.Classes
 
         public void DeleteTag(Tag tag)
         {
-            tagRepository.Remove(tag);
-        }
-
-        public void UpdateTag(Tag tag)
-        {
-            tagRepository.Edit(tag);
+            FakeDBContext.Tags.Remove(tag);
         }
     }
 }

@@ -65,12 +65,7 @@ namespace BLL.Services.Classes
 
         public void DeleteComics(Comics comics)
         {
-            comicsRepository.DeleteComics(comics);
-        }
-
-        public void UpdateComics(Comics comics)
-        {
-            comicsRepository.EditComics(comics);
+            FakeDBContext.Comicses.Remove(comics);
         }
     }
 }
